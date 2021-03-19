@@ -58,21 +58,7 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/flight_reservation](https://hexdocs.pm/flight_reservation).
 
-## Etapas do desenvolvimento
 
-1. mix new flight_reservation
-
-2. cd flight_reservation
-
-3. Atualizar README.md	
-
-4. Incluir as libs Credo e ExMachina nas dependências (mix.exs)
-
-```
-{ :ex_machina, "~> 2.7.0"},
-{ :credo, "~> 1.5.5", only: [:dev, :test], runtime: false}
-mix credo gen.config
-```
 
 
 
