@@ -39,5 +39,12 @@ defmodule FlightReservation.Bookings.AgentTest do
 
       assert response == expected_response
     end
+    test "if booking not found, returns an error" do
+      BookingsAgent.start_link(%{})
+      response = BookingsAgent.get("not_found_id")
+      expected_response = {:error, "Booking not found"}
+      assert response == expected_response
+
+    end
   end
 end
