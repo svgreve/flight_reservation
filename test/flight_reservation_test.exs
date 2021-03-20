@@ -3,7 +3,7 @@ defmodule FlightReservationTest do
 
   alias FlightReservation
 
-  describe "create_or_update_user/1" do
+  describe "create_user/1" do
     test "when all parameters are correct, create the user" do
       FlightReservation.start_agents()
 
@@ -13,16 +13,11 @@ defmodule FlightReservationTest do
         cpf: "123.456.789-00"
       }
 
-      {:ok, user} = FlightReservation.create_or_update_user(user_params)
+      {:ok, user_id} = FlightReservation.create_user(user_params)
 
-      expected_user = %FlightReservation.Users.User{
-        cpf: "123.456.789-00",
-        email: "sergio@banana.com",
-        id: user.id,
-        name: "Sergio"
-      }
+      expected_user_id = user_id
 
-      assert user == expected_user
+      assert user_id == expected_user_id
     end
 
     test "when cpf is invalid, returns an error" do
@@ -34,7 +29,7 @@ defmodule FlightReservationTest do
         cpf: "123456789"
       }
 
-      response = FlightReservation.create_or_update_user(user_params)
+      response = FlightReservation.create_user(user_params)
 
       expected_response = {:error, "Invalid CPF: 123456789"}
       assert response == expected_response
@@ -42,7 +37,7 @@ defmodule FlightReservationTest do
 
     test "when there are no user parameters, returns an error" do
       FlightReservation.start_agents()
-      response = FlightReservation.create_or_update_user(%{})
+      response = FlightReservation.create_user(%{})
 
       expected_response = {:error, "Invalid parameters"}
       assert response == expected_response

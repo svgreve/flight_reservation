@@ -5,7 +5,7 @@ defmodule FlightReservation.Bookings.BookingTest do
   describe "build/4" do
     test "if booking parameters are correct, build the booking" do
       response =
-        Booking.build({2021, 4, 1, 10, 12}, "São Paulo", "Rio de Janeiro", "id do usuário")
+        Booking.build( "id do usuário", {2021, 4, 1, 10, 12}, "São Paulo", "Rio de Janeiro")
 
 
       expected_response = %FlightReservation.Bookings.Booking{

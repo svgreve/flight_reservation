@@ -10,7 +10,10 @@ defmodule FlightReservation do
     BookingAgent.start_link(%{})
   end
 
-  defdelegate create_or_update_user(user_params), to: CreateOrUpdateUser, as: :call
+  defdelegate create_user(user_params), to: CreateOrUpdateUser, as: :call
+  defdelegate create_booking(user_id, booking_params), to: CreateOrUpdateBooking, as: :call
 
-  defdelegate create_or_update_booking(user_id, booking_params), to: CreateOrUpdateBooking, as: :call
+  defdelegate get_user(id), to: UserAgent, as: :get
+  defdelegate get_booking(id), to: BookingAgent, as: :get
+
 end

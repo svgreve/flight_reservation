@@ -12,7 +12,7 @@ defmodule FlightReservation.Users.CreateOrUpdate do
 
   defp save_user(%User{} = user) do
     UserAgent.save(user)
-    {:ok, user}
+    {:ok, user.id}
   end
 
   defp save_user({:error, reason}) do

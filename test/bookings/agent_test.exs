@@ -8,7 +8,7 @@ defmodule FlightReservation.Bookings.AgentTest do
       BookingsAgent.start_link(%{})
 
       booking =
-        Booking.build({2021, 4, 1, 10, 12}, "São Paulo", "Rio de Janeiro", "id do usuário")
+        Booking.build( "id do usuário", {2021, 4, 1, 10, 12}, "São Paulo", "Rio de Janeiro")
 
       response = BookingsAgent.save(booking)
       expected_response = :ok
@@ -22,7 +22,7 @@ defmodule FlightReservation.Bookings.AgentTest do
       BookingsAgent.start_link(%{})
 
       booking =
-        Booking.build({2021, 4, 1, 10, 12}, "São Paulo", "Rio de Janeiro", "id do usuário")
+        Booking.build("id do usuário", {2021, 4, 1, 10, 12}, "São Paulo", "Rio de Janeiro")
 
       BookingsAgent.save(booking)
       response = BookingsAgent.get(booking.id)
